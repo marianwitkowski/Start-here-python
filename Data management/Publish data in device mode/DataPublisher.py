@@ -1,4 +1,5 @@
 import paho.mqtt.client as mqtt
+from json.devData.LoData import LoData, SampleData
 from datetime import timedelta
 
 #Connection parameters
@@ -34,6 +35,9 @@ sampleClient.username_pw_set(USERNAME,password = list(API_KEY)) # use device mod
 sampleClient.connect(SERVER, PORT, 60)
 
 # create message
-
+LoData = LoData()
+myData = SampleData()
+LoData.s = "Stream1"
+print(LoData.s)
 
 sampleClient.loop_forever()
