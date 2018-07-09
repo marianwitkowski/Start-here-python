@@ -1,5 +1,5 @@
 import paho.mqtt.client as mqtt
-from json.devData.LoData import LoData, SampleData
+from json.LoSampleData import LoData, SampleData
 from datetime import timedelta
 
 #Connection parameters
