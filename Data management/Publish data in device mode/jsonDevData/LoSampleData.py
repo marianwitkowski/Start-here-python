@@ -6,7 +6,6 @@ class SampleData():
         self.temperature = 0
         self.hygrometry = 0
 
-
 class LoData(SampleData):
     """docstring for LoData."""
     def __init__(self):
@@ -19,3 +18,5 @@ class LoData(SampleData):
         self.v.temperature = 0
         self.v.hygrometry = 0
         self.t  = ""        # optionnal tags regarding your needs
+
+    # def __call__(self, foo, bar, baz=None):

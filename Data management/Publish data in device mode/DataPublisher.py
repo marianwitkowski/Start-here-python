@@ -1,13 +1,16 @@
 import paho.mqtt.client as mqtt
-from json.LoSampleData import LoData, SampleData
-from datetime import timedelta
-
+from jsonDevData.LoSampleData import LoData, SampleData
+from datetime import datetime
+import numpy as np
+import json
+import time
+#e6e10b0cdc50409bab7748f8c4d0dfd2
 #Connection parameters
 SERVER = "liveobjects.orange-business.com"
 PORT = 1883
-API_KEY   = "81b6f448add842a29d5a476d4fa112a8"
+API_KEY   = "f5d08f4067e14db884b0d7ed6ea276a0"
 USERNAME  = "json+device"
-CLIENT_ID = "urn:lo:nsid:samples:device1"
+CLIENT_ID = "urn:lo:nsid:samples:TEST"
 
 #Publications parameters
 TOPIC="dev/data"
@@ -32,12 +35,31 @@ sampleClient.on_connect = on_connect
 sampleClient.on_message = on_message
 sampleClient.username_pw_set(USERNAME,password = list(API_KEY)) # use device mode and set the password
 # now connect to LO
+# while True:
 sampleClient.connect(SERVER, PORT, 60)
 
-# create message
+# # create message
 LoData = LoData()
 myData = SampleData()
-LoData.s = "Stream1"
-print(LoData.s)
 
-sampleClient.loop_forever()
+msgDt = datetime.now().isoformat()
+LoData.s = "Stream1"
+LoData.m = "samplesModel"
+LoData.loc = np.array([48.125,2.185])
+LoData.v = myData
+myData.payload = "Message from deviceMode on dev/data on " + msgDt
+myData.temperature=24
+myData.hygrometry=12
+
+msg = json.dumps(myData.__dict__) ## get all atributes values with .__dict__
+sampleClient.loop_start()
+sampleClient.publish(TOPIC, msg, qos)
+print ("Message published")
+print LoData.v
+# time.sleep(3)
+
+# Send your message
+
+# Disconnect
+sampleClient.disconnect()
+print("Disconnected")
