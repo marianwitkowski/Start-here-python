@@ -45,18 +45,18 @@ myData = SampleData()
 msgDt = datetime.now().isoformat()
 LoData.s = "Stream1"
 LoData.m = "samplesModel"
+LoData.ts = msgDt
 LoData.loc = np.array([48.125,2.185])
-LoData.v = myData
 myData.payload = "Message from deviceMode on dev/data on " + msgDt
 myData.temperature=24
 myData.hygrometry=12
-
-msg = json.dumps(myData.__dict__) ## get all atributes values with .__dict__
+LoData.v = myData
+print LoData.loc
+data = '{"s": "","ts":"'+msgDt+'", "m":"'+LoData.m+'", "v": {"temp": "'+str(myData.temperature)+'", "humid": "'+str(myData.hygrometry)+'", "gpsSats": "'+str(LoData.loc)+'"}  }'
 sampleClient.loop_start()
-sampleClient.publish(TOPIC, msg, qos)
+sampleClient.publish(TOPIC, data, qos)
 print ("Message published")
-print LoData.v
-# time.sleep(3)
+print data
 
 # Send your message
 
