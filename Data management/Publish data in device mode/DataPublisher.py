@@ -4,7 +4,7 @@ from datetime import datetime
 import numpy as np
 import json
 import time
-#e6e10b0cdc50409bab7748f8c4d0dfd2
+
 #Connection parameters
 SERVER = "liveobjects.orange-business.com"
 PORT = 1883
@@ -29,13 +29,12 @@ def on_message(sampleClient, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
 
 
-
+# Create and fill your connections options
 sampleClient = mqtt.Client(CLIENT_ID, clean_session=True, userdata = None, protocol=mqtt.MQTTv311, transport="tcp")
 sampleClient.on_connect = on_connect
 sampleClient.on_message = on_message
 sampleClient.username_pw_set(USERNAME,password = list(API_KEY)) # use device mode and set the password
 # now connect to LO
-# while True:
 sampleClient.connect(SERVER, PORT, 60)
 
 # # create message
@@ -51,14 +50,13 @@ myData.payload = "Message from deviceMode on dev/data on " + msgDt
 myData.temperature=24
 myData.hygrometry=12
 LoData.v = myData
-print LoData.loc
 data = '{"s": "","ts":"'+msgDt+'", "m":"'+LoData.m+'", "v": {"temp": "'+str(myData.temperature)+'", "humid": "'+str(myData.hygrometry)+'", "gpsSats": "'+str(LoData.loc)+'"}  }'
+
 sampleClient.loop_start()
-sampleClient.publish(TOPIC, data, qos)
-print ("Message published")
-print data
 
 # Send your message
+sampleClient.publish(TOPIC, data, qos)
+print ("Message published")
 
 # Disconnect
 sampleClient.disconnect()
