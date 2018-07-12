@@ -8,7 +8,7 @@ import time
 #Connection parameters
 SERVER = "liveobjects.orange-business.com"
 PORT = 1883
-API_KEY   = "f5d08f4067e14db884b0d7ed6ea276a0"
+API_KEY   = "YOUR-KEY"
 USERNAME  = "json+device"
 CLIENT_ID = "urn:lo:nsid:samples:TEST"
 
