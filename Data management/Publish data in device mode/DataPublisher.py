@@ -52,7 +52,7 @@ myData.hygrometry=12
 LoData.v = myData
 data = '{"s": "","ts":"'+msgDt+'", "m":"'+LoData.m+'", "v": {"temp": "'+str(myData.temperature)+'", "humid": "'+str(myData.hygrometry)+'", "gpsSats": "'+str(LoData.loc)+'"}  }'
 
-sampleClient.loop_start()
+sampleClient.loop_forever()
 
 # Send your message
 sampleClient.publish(TOPIC, data, qos)
