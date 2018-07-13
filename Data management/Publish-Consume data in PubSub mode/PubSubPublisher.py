@@ -1,11 +1,3 @@
-# @Author: Moustapha KEBE <kebson>
-# @Date:   2018-07-12T14:58:01+02:00
-# @Email:  mktapha@gmail.com
-# @Last modified by:   kebson
-# @Last modified time: 2018-07-13T14:18:10+02:00
-
-
-
 import paho.mqtt.client as mqtt
 from datetime import datetime
 

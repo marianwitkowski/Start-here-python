@@ -1,18 +1,10 @@
-# @Author: Moustapha KEBE <kebson>
-# @Date:   2018-07-12T15:18:22+02:00
-# @Email:  mktapha@gmail.com
-# @Last modified by:   kebson
-# @Last modified time: 2018-07-13T12:10:24+02:00
-
-
-
 import paho.mqtt.client as mqtt
 from datetime import datetime
 
 
 SERVER = "liveobjects.orange-business.com"
 PORT = 1883
-API_KEY   = "e6e10b0cdc50409bab7748f8c4d0dfd2"
+API_KEY   = "Your API_KEY"
 USERNAME  = "payload+bridge"
 CLIENT_ID = "myFifoClientId"
 
@@ -51,5 +43,3 @@ print "... connected."
 
 sampleClient.subscribe(TOPIC,qos)
 sampleClient.loop_forever()
-# sampleClient.connect_async(SERVER,PORT, KEEP_ALIVE_INTERVAL,bind_address="")
-# print("rc: "+str(rc))
