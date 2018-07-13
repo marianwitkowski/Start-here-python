@@ -2,7 +2,7 @@
 # @Date:   2018-07-12T14:58:01+02:00
 # @Email:  mktapha@gmail.com
 # @Last modified by:   kebson
-# @Last modified time: 2018-07-13T12:16:27+02:00
+# @Last modified time: 2018-07-13T14:18:10+02:00
 
 
 
@@ -12,8 +12,8 @@ from datetime import datetime
 
 SERVER = "liveobjects.orange-business.com"
 PORT = 1883
-API_KEY   = "xxx"
-USERNAME  = "json+bridge"
+API_KEY   = "Your API_KEY"
+USERNAME  = "payload+bridge"
 CLIENT_ID = "myFifoClientId"
 
 #Publications parameters
