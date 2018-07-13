@@ -10,7 +10,7 @@ SERVER = "liveobjects.orange-business.com"
 PORT = 1883
 API_KEY   = "YOUR-KEY"
 USERNAME  = "json+device"
-CLIENT_ID = "urn:lo:nsid:samples:TEST"
+CLIENT_ID = "urn:lo:nsid:samples:device1"
 
 #Publications parameters
 TOPIC="dev/data"
