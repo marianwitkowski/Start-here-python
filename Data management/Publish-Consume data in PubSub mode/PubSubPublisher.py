@@ -1,10 +1,18 @@
+# @Author: Moustapha KEBE <kebson>
+# @Date:   2018-07-12T14:58:01+02:00
+# @Email:  mktapha@gmail.com
+# @Last modified by:   kebson
+# @Last modified time: 2018-07-13T12:16:27+02:00
+
+
+
 import paho.mqtt.client as mqtt
 from datetime import datetime
 
 
 SERVER = "liveobjects.orange-business.com"
 PORT = 1883
-API_KEY   = "f5d08f4067e14db884b0d7ed6ea276a0"
+API_KEY   = "xxx"
 USERNAME  = "json+bridge"
 CLIENT_ID = "myFifoClientId"
 
@@ -17,7 +25,7 @@ def on_connect(client, userdata, flags, rc):
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    client.subscribe(TOPIC)
+    # client.subscribe(TOPIC)
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(sampleClient, userdata, msg):
