@@ -12,7 +12,7 @@ from datetime import datetime
 
 SERVER = "liveobjects.orange-business.com"
 PORT = 1883
-API_KEY   = "YOUR API_KEY"
+API_KEY   = "Your API_KEY"
 USERNAME  = "payload+bridge"
 CLIENT_ID = "app:"+str(uuid.uuid4()) #  in bridge mode : should be of your choice
 
