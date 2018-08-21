@@ -17,7 +17,7 @@ USERNAME  = "payload+bridge"
 CLIENT_ID = "app:"+str(uuid.uuid4()) #  in bridge mode : should be of your choice
 
 #Publications parameters
-TOPIC="router/~event/v1/data/new/#" # topic to subscribe to
+TOPIC="router/~event/v1/data/new/typ/+/dev/+/con/+/evt/+/grp/#" # topic to subscribe to
 qos = 1
 KEEP_ALIVE_INTERVAL = 30 # Must be <= 50
 
