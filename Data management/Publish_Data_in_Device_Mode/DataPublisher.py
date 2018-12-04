@@ -8,7 +8,7 @@ import time
 #Connection parameters
 SERVER = "liveobjects.orange-business.com"
 PORT = 1883
-API_KEY   = "YOU-API_KEY"
+API_KEY   = "52fc306744a3447faab861ed8d4f2b77"
 USERNAME  = "json+device"
 CLIENT_ID = "urn:lo:nsid:samples:device1"
 
@@ -47,10 +47,10 @@ LoData.m = "samplesModel"
 LoData.ts = msgDt
 LoData.loc = np.array([48.125,2.185])
 myData.payload = "Message from deviceMode on dev/data on " + msgDt
-myData.temperature=1
-myData.hygrometry=1
+myData.temperature=16
+myData.hygrometry=11
 LoData.v = myData
-data = '{"source": "'+CLIENT_ID+'","m":"'+LoData.m+'", "value": {"temp": '+str(myData.temperature)+', "humid": '+str(myData.hygrometry)+'}  }'
+data = '{"s": "'+CLIENT_ID+'","m":"'+LoData.m+'", "value": {"temperature": '+str(myData.temperature)+', "humidite": '+str(myData.hygrometry)+'}, "location":{"lat":'+str(LoData.loc[0])+', "lon": '+str(LoData.loc[1])+'}   }'
 
 sampleClient.loop_start()
 while True:
@@ -60,5 +60,5 @@ while True:
     print(data)
     time.sleep(4)
     # Disconnect
-# sampleClient.disconnect()
-# print("Disconnected")
+sampleClient.disconnect()
+print("Disconnected")
