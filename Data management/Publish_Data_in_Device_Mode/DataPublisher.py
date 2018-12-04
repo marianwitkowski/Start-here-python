@@ -8,7 +8,7 @@ import time
 #Connection parameters
 SERVER = "liveobjects.orange-business.com"
 PORT = 1883
-API_KEY   = "52fc306744a3447faab861ed8d4f2b77"
+API_KEY   = "YOUR_API_KEY"
 USERNAME  = "json+device"
 CLIENT_ID = "urn:lo:nsid:samples:device1"
 
@@ -60,5 +60,5 @@ while True:
     print(data)
     time.sleep(4)
     # Disconnect
-sampleClient.disconnect()
-print("Disconnected")
+# sampleClient.disconnect()
+# print("Disconnected")
