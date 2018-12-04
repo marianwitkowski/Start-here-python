@@ -8,7 +8,7 @@ import time
 #Connection parameters
 SERVER = "liveobjects.orange-business.com"
 PORT = 1883
-API_KEY   = "YOUR-KEY"
+API_KEY   = "YOU-API_KEY"
 USERNAME  = "json+device"
 CLIENT_ID = "urn:lo:nsid:samples:device1"
 
@@ -33,7 +33,7 @@ def on_message(sampleClient, userdata, msg):
 sampleClient = mqtt.Client(CLIENT_ID, clean_session=True, userdata = None, protocol=mqtt.MQTTv311, transport="tcp")
 sampleClient.on_connect = on_connect
 sampleClient.on_message = on_message
-sampleClient.username_pw_set(USERNAME,password = list(API_KEY)) # use device mode and set the password
+sampleClient.username_pw_set(USERNAME,password = API_KEY) # use device mode and set the password
 # now connect to LO
 sampleClient.connect(SERVER, PORT, 60)
 
@@ -47,17 +47,18 @@ LoData.m = "samplesModel"
 LoData.ts = msgDt
 LoData.loc = np.array([48.125,2.185])
 myData.payload = "Message from deviceMode on dev/data on " + msgDt
-myData.temperature=24
-myData.hygrometry=12
+myData.temperature=1
+myData.hygrometry=1
 LoData.v = myData
-data = '{"s": "","ts":"'+msgDt+'", "m":"'+LoData.m+'", "v": {"temp": "'+str(myData.temperature)+'", "humid": "'+str(myData.hygrometry)+'", "gpsSats": "'+str(LoData.loc)+'"}  }'
+data = '{"source": "'+CLIENT_ID+'","m":"'+LoData.m+'", "value": {"temp": '+str(myData.temperature)+', "humid": '+str(myData.hygrometry)+'}  }'
 
-sampleClient.loop_forever()
-
-# Send your message
-sampleClient.publish(TOPIC, data, qos)
-print ("Message published")
-
-# Disconnect
-sampleClient.disconnect()
-print("Disconnected")
+sampleClient.loop_start()
+while True:
+    # Send your message
+    sampleClient.publish(TOPIC, data, qos)
+    print ("Message published")
+    print(data)
+    time.sleep(4)
+    # Disconnect
+# sampleClient.disconnect()
+# print("Disconnected")
